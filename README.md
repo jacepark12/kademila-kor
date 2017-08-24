@@ -55,12 +55,17 @@ DHT : Distributed Hash Table (분산 해시 테이블)
   Kademila 탐색 작업을 반복할때마다 한 비트씩 탐색 대상에 가까워지게 됩니다. 2**n개의 node를 가지고 있는 일반적인 Kademila network에서는 최대 n번 탐색 작업을 반복하면 임의의 node를 찾을 수 있습니다.
 
 
+
 ## Routing Table
  * 아래에 내용에서는 단순화된 key를 이용합니다.
 
- Kademila routing table는 각 node id들의 각 비트를 저장한 리스트를 포함하고 있습니다. 리스트의 모든 항목은 다른 node들의 위치에 대한 중요한 정보를 저장합니다. 리스트의 각 항목은 일반적으로 다른 node의 IP 주소, 포트, Node Id를 저장합니다. 
-  
-  모든 리스트는 특정 node의 거리와 대응됩니다. 
+ Kademila routing table는 각 node id들의 각 비트를 저장한 리스트를 포함하고 있습니다. (ex. 만약 node id가 128비트라면, node는 128개의 리스트를 가집니다.) 리스트의 모든 항목은 다른 node들의 위치에 대한 중요한 정보를 저장합니다. 리스트의 각 항목은 일반적으로 다른 node의 IP 주소, 포트, Node Id를 저장합니다. 후보 id의 n-1번째 비트는 node id와 일치해야합니다. 
+
+//모든 리스트는 특정 node의 거리와 대응됩니다. n번째 리스트에 갈 수 있는 node는 반드시 node id의 n번째 비트가 달라야 합니다.
+
+128 비트의 id가 있는 네트워크에서는, 128개의 다른 거리로 다른 node들을 식별하게 됩니다.
+
+ node가 network에 참가하게 되면, 리스트에 추가됩니다. 이러한 과정은 통해 다른 node들이 key를 찾는 것을 돕습니다. 
 
 ![DHT_ex1](./images/Dht_example_SVG.png)
 
@@ -91,7 +96,9 @@ DHT : Distributed Hash Table (분산 해시 테이블)
 ## 작성자
 
 박재성
+
 	* jspark14151@gmail.com
+	* Korea Digital Media High School
 
 
 
